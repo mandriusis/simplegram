@@ -4,6 +4,8 @@ This is a quick and simple social media image sharing app written in Ruby. It wa
 
 Some highlights:
 
+* StimulusJS
+
 * ActionCable for real-time comment updates
 
 * Active Storarge
