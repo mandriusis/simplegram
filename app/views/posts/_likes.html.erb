@@ -1,0 +1,26 @@
+<h5 class="text-muted">
+
+<%= post.likes_count %>
+
+<% if current_user.present?  && current_user.likes?(post) %>
+    <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+      <svg width="25px" height="25px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+          <g id="heart" fill="purple">
+              <path d="M10,2.22 L9.39,1.62 C7.22743631,-0.425051064 3.8303981,-0.378715619 1.72441737,1.72455819 C-0.381563355,3.82783201 -0.432267941,7.22480781 1.61,9.39 L10,17.78 L18.39,9.38 C20.4322679,7.21480781 20.3815634,3.81783201 18.2755826,1.71455819 C16.1696019,-0.388715619 12.7725637,-0.435051064 10.61,1.61 L10,2.22 Z" id="Path"></path>
+          </g>
+        </g>
+      </svg>
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post), method: :post, remote: true do %>
+      <svg width="25px" height="25px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+          <g id="heart" fill="grey">
+              <path d="M10,2.22 L9.39,1.62 C7.22743631,-0.425051064 3.8303981,-0.378715619 1.72441737,1.72455819 C-0.381563355,3.82783201 -0.432267941,7.22480781 1.61,9.39 L10,17.78 L18.39,9.38 C20.4322679,7.21480781 20.3815634,3.81783201 18.2755826,1.71455819 C16.1696019,-0.388715619 12.7725637,-0.435051064 10.61,1.61 L10,2.22 Z" id="Path"></path>
+          </g>
+        </g>
+      </svg>
+    <% end %>
+  <% end %>
+</h5>
