@@ -26,6 +26,8 @@ gem 'devise', '~> 4.7'
 
 gem 'local_time'
 
+gem 'aws-sdk-s3', require: false
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
