@@ -24,6 +24,8 @@ gem 'redis', '~> 4.0'
 
 gem 'devise', '~> 4.7'
 
+gem 'local_time'
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
