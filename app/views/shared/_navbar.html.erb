@@ -11,21 +11,27 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to "Log in", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Upload", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "@Matt", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign out", root_path, class: "nav-link" %>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Upload", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Edit User", edit_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to current_user.username, root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
