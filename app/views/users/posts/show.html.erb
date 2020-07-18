@@ -40,7 +40,7 @@
               <%= render partial:"posts/comments/pagination_links", 
                 locals: {post: @post, last_result: @comments.reverse.first} %>
             </div>
-            <%= render(partial: "posts/comments/comment", collection: @comments.reverse, locals: {current_user: current_user, isCurrentUsersPost: @post.user == current_user ? true : false })%>
+            <%= render(partial: "posts/comments/comment", collection: @comments.reverse, locals: { current_user: current_user } )%>
           <% else %>
             <h6 data-target="comments-list.blankslateText">No comments yet, be the first one.</h6>
           <% end %>

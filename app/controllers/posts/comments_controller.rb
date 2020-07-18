@@ -43,8 +43,8 @@ module Posts
       ApplicationController.renderer.render(
         partial: "posts/comments/comment",
         locals: { 
+          realtime: true,
           comment: @comment,
-          isCurrentUsersPost: @post.user == current_user ? true : false,
           current_user: current_user 
         },
         format: :html

@@ -61,7 +61,7 @@ export default class extends Controller {
   onPostSuccess(event) {
     let [data, status, xhr] = event.detail;
 
-    //this.commentListTarget.innerHTML += xhr.response;
+    this.scrollToBottom();
     this.textareaTarget.value = "";
     this.newCommentErrorsTarget.innerHTML = "";
   }
@@ -77,5 +77,15 @@ export default class extends Controller {
 
       this.commentListTarget.insertAdjacentElement('afterbegin', placeholder);
     }
+  }
+
+  scrollToBottom() {
+    const lastComment = this.commentListTarget.children.item(this.commentListTarget.children.length - 1);
+
+    lastComment.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    })
   }
 }

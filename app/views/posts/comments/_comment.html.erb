@@ -4,10 +4,12 @@
   </div>
 
   <div class="col-sm-11">
-    <% if current_user.present? && (comment.user_id == current_user.id || isCurrentUsersPost)%>
-      <small class="float-right text-muted">
-        <%= link_to "Delete", post_comment_path(comment.commentable, comment), method: :delete, remote: true, class: "text-muted", data: { confirm: "Are you sure? This cannot be undone."} %>
-      </small>
+    <% unless local_assigns[:realtime].present? %>
+      <% if comment.user_id == current_user&.id || comment.commentable.user_id == current_user&.id %>
+        <small class="float-right text-muted">
+          <%= link_to "Delete", post_comment_path(comment.commentable, comment), method: :delete, remote: true, class: "text-muted", data: { confirm: "Are you sure? This cannot be undone."} %>
+        </small>
+      <% end %>
     <% end %>
 
     <small><em><strong>Posted by: <%= comment.user.username %></strong> on <%= comment.created_at %></em></small>
