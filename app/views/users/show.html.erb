@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-center mt-5">
   <div class="media mr-5 align-self-start">
     <%= image_tag avatar_url_for(@user, size: 128), class: "rounded-circle mr-4" %>
-  <div>
+  </div>
   <div class="media">
     <div class="media-body">
       <div class="d-flex flex-row align-items-center justify-content-between">
@@ -12,3 +12,26 @@
   </div>
 </div>
 
+<div class="d-block align-items-center justify-content-center mt-5">
+  <h2 class="text-center mb-4">Posts</h2>
+
+  <% if @posts.any? %>
+    <% @posts.each_slice(3) do |slice| %>
+      <div class="row mb-3">
+        <% slice.each do |post| %>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-image-top">
+                <%= link_to user_post_path(post.user.username, post.id) do %>
+                  <%= image_tag post.image.variant(resize_to_fill: [250, 250]), style: "width: 100%" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    No posts yet!
+  <% end %>
+</div>
