@@ -21,9 +21,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # TODO You can delete anyone's post!!
-    # @post = current_user.posts.find(params[:id])
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     redirect_to user_path(@post.user.username), notice: "Post deleted"
   end
