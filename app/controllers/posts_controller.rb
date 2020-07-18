@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #with_attached_image avoid n+1
+    @posts = Post.of_followed_users(current_user.following).with_attached_image.order(created_at: :desc)
+  end
+
+  def explore
     @posts = Post.with_attached_image.order(created_at: :desc)
   end
 

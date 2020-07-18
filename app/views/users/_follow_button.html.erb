@@ -1,0 +1,11 @@
+  <% unless user == current_user %>
+  <% if current_user.follows?(@user.id) %>
+    <%= link_to "Unfollow", follower_path(user_id: @user.id), method: :delete, 
+      remote: true, class: "btn btn-primary btn-sm", 
+      data: { disable_with: "Unfollowing..."} %>
+  <% else %>
+    <%= link_to "Follow", followers_path(user_id: @user.id), method: :post, 
+      remote: true, class: "btn btn-outline-primary btn-sm", 
+      data: { disable_with: "Following..."} %>
+  <% end %>
+<% end %>
