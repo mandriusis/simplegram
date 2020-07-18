@@ -16,7 +16,10 @@
             <%= link_to "Upload", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to current_user.username, user_path(current_user.username), class: "nav-link" %>
+            <%= link_to user_path(current_user.username), class: "nav-link" do %>
+              <%= image_tag avatar_url_for(current_user, size: 24), class: "rounded-circle mr-1" %>
+             <%= current_user.username %>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
